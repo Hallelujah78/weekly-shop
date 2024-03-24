@@ -4,10 +4,6 @@
 
 ## Todo
 
-- add folders in src, component, styles etc
-- add a global style with createGlobalStyle
-- add box-sizing: border box;
-
 ## Before Installing Deps
 
 - Delete anything you don't want from the deps in package.json

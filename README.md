@@ -5,7 +5,7 @@
     <br/>
     <br/>
     <br />
-    React + TypeScript + Vite + Cypress Starter
+    Weekly Shopping List
     <br />
     <br />
     <br />

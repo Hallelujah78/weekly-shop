@@ -1,2 +1,2 @@
-export type Item = { name: string, strike: boolean};
+export interface Item { id: number, name: string, strike: boolean};
 

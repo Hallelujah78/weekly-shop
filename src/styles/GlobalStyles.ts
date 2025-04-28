@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
 ${reset}
 #root{
   box-sizing: border-box !important;
+  user-select: none;
 }
 `;
-
 export default GlobalStyle;

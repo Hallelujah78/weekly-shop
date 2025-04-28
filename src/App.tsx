@@ -5,11 +5,54 @@ import ShopItem from "./components/ShopItem";
 
 const App: React.FC = () => {
 
-const [items, setItems] = useState<Item[]>([{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false},{name: "Doritos", strike: false}, {name: "Gouda", strike: false}]);
+const [items, setItems] = useState<Item[]>([
+  { id: 1, name: "Doritos", strike: false },
+  { id: 2, name: "Gouda", strike: false },
+  { id: 3, name: "Doritos", strike: false },
+  { id: 4, name: "Gouda", strike: false },
+  { id: 5, name: "Doritos", strike: false },
+  { id: 6, name: "Gouda", strike: false },
+  { id: 7, name: "Doritos", strike: false },
+  { id: 8, name: "Gouda", strike: false },
+  { id: 9, name: "Doritos", strike: false },
+  { id: 10, name: "Gouda", strike: false },
+  { id: 11, name: "Doritos", strike: false },
+  { id: 12, name: "Gouda", strike: false },
+  { id: 13, name: "Doritos", strike: false },
+  { id: 14, name: "Gouda", strike: false },
+  { id: 15, name: "Doritos", strike: false },
+  { id: 16, name: "Gouda", strike: false },
+  { id: 17, name: "Doritos", strike: false },
+  { id: 18, name: "Gouda", strike: false },
+  { id: 19, name: "Doritos", strike: false },
+  { id: 20, name: "Gouda", strike: false },
+  { id: 21, name: "Doritos", strike: false },
+  { id: 22, name: "Gouda", strike: false },
+  { id: 23, name: "Doritos", strike: false },
+  { id: 24, name: "Gouda", strike: false },
+  { id: 25, name: "Doritos", strike: false },
+  { id: 26, name: "Gouda", strike: false },
+  { id: 27, name: "Doritos", strike: false },
+  { id: 28, name: "Gouda", strike: false },
+  { id: 29, name: "Doritos", strike: false },
+  { id: 30, name: "Gouda", strike: false }
+]
+);
+
+const [id, setID] = useState(30);
+
+const handleDelete = (id: number) =>{
+  setItems(prevItems => prevItems.filter(item => item.id !== id))
+}
+
+const handleToggleStrikeThrough = (id: number) =>{
+  setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item))
+}
 
 
 const addItem = (newName: string) =>{
-  setItems(prev => [...prev, {name: newName, strike: false}])
+  setID(prev => prev + 1);
+  setItems(prev => [...prev, {id: id, name: newName, strike: false}]);
 }
 
   return (
@@ -18,8 +61,8 @@ const addItem = (newName: string) =>{
         <h1>Weekly Shopping</h1>
       </nav>
       <section>
-    {items.map((item, index)=>{
-      return <ShopItem key={index} item={item} index={index}/>
+    {items.map((item)=>{
+      return <ShopItem key={item.id} item={item} onDelete={handleDelete} onToggle={handleToggleStrikeThrough}/>
     })}
       </section>
     </Wrapper>

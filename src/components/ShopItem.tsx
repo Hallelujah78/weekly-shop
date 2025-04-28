@@ -10,6 +10,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ item, index}) => {
     <Wrapper id={index.toString()}
     >
       <div className="name-container">{item.name}</div>
+      <button type="button" className="delete-btn">❌</button>
     </Wrapper>
   );
 };
@@ -18,7 +19,7 @@ export default ShopItem;
 const Wrapper = styled.div`
   cursor: pointer;
   position: relative;
-  display: inline-block;
+  display: flex;
   height: fit-content;
   width: 80vw;
   border: black solid 1px;
@@ -31,11 +32,9 @@ const Wrapper = styled.div`
     font-weight: bold;
     font-size: calc(0.7rem + 0.390625vw);
   }
-  @media (max-width: 600px) {
-    height: calc(95vw / 13);
-    width: calc(95vw / 13);
-    .letter-container {
-      line-height: calc(95vw / 13);
-    }
-  }
+  .delete-btn{
+    background-color: transparent;
+    border: none;
+    font-size: calc(1rem + 0.390625vw);
+  } 
 `;

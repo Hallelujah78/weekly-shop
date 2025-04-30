@@ -39,7 +39,10 @@ const [items, setItems] = useState<Item[]>([
 ]
 );
 
+// state for ID
 const [id, setID] = useState(30);
+// State for show/hide items that have strikethrough
+const [isHidden, setIsHidden] = useState(false);
 
 const handleDelete = (id: number) =>{
   setItems(prevItems => prevItems.filter(item => item.id !== id))
@@ -59,6 +62,7 @@ const addItem = (newName: string) =>{
     <Wrapper>
       <nav>
         <h1>Weekly Shopping</h1>
+        <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>{isHidden ? "Show" : "Hide"}</button>
       </nav>
       <section>
     {items.map((item)=>{
@@ -78,6 +82,10 @@ const Wrapper = styled.div`
     border-bottom: 1px solid gray;
     text-align: center;
     height: 3rem;
+    display: flex;
+  button{
+    width: 4rem;
+  }
   }
   h1 {
     margin: auto;

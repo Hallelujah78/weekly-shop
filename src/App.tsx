@@ -43,6 +43,8 @@ const [items, setItems] = useState<Item[]>([
 const [id, setID] = useState(30);
 // State for show/hide items that have strikethrough
 const [isHidden, setIsHidden] = useState(false);
+// State to show/hide the add item form
+const [isFormHidden, setIsFormHidden] = useState(false);
 
 const handleDelete = (id: number) =>{
   setItems(prevItems => prevItems.filter(item => item.id !== id))
@@ -50,6 +52,10 @@ const handleDelete = (id: number) =>{
 
 const handleToggleStrikeThrough = (id: number) =>{
   setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item))
+}
+
+const showAddItemForm = () =>{
+
 }
 
 
@@ -62,11 +68,17 @@ const addItem = (newName: string) =>{
     <Wrapper>
       <nav>
         <h1>Weekly Shopping</h1>
+        <button type="button">➕</button>
         <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>{isHidden ? "Show" : "Hide"}</button>
       </nav>
       <section>
     {items.map((item)=>{
-      return <ShopItem key={item.id} item={item} onDelete={handleDelete} onToggle={handleToggleStrikeThrough}/>
+      // if items are not hidden OR they are hidden AND the item doesn't have strikethrough
+      if(!isHidden || isHidden && !item.strike){
+        // Render the item
+         return <ShopItem key={item.id} item={item} onDelete={handleDelete} onToggle={handleToggleStrikeThrough}/>
+      } 
+      // Otherwise do nothing
     })}
       </section>
     </Wrapper>

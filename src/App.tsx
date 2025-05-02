@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
+import AddItemForm from "./components/AddItemForm";
 
 const App: React.FC = () => {
 
@@ -80,6 +81,7 @@ const addItem = (newName: string) =>{
       } 
       // Otherwise do nothing
     })}
+    <AddItemForm />
       </section>
     </Wrapper>
   );
@@ -109,6 +111,5 @@ const Wrapper = styled.div`
     display: grid;
     place-content: center;
     max-width: 100%;
-    
   }
 `;

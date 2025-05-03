@@ -60,9 +60,9 @@ const showAddItemForm = () =>{
 }
 
 
-const addItem = (newName: string) =>{
+const handleFormSubmit = (name: string) =>{
   setID(prev => prev + 1);
-  setItems(prev => [...prev, {id: id, name: newName, strike: false}]);
+  setItems(prev => [...prev, {id: id, name, strike: false}]);
 }
 
   return (
@@ -81,7 +81,7 @@ const addItem = (newName: string) =>{
       } 
       // Otherwise do nothing
     })}
-    <AddItemForm />
+    <AddItemForm onSubmit={handleFormSubmit}/>
       </section>
     </Wrapper>
   );

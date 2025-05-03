@@ -1,17 +1,29 @@
 import type React from 'react';
 import styled from 'styled-components';
+import type { FormProps } from '../models/FormProps.model';
+import { useState } from 'react';
 
-const AddItemForm: React.FC = () => {
+const AddItemForm: React.FC<FormProps> = ({onSubmit}) => {
+
+const [name, setName] = useState('');
+
+const handleSubmit = (e: React.FormEvent) =>{
+  e.preventDefault();
+  onSubmit(name);
+  setName("");
+  
+}
+
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit}>
         <header> <h2>Add Shopping List Item</h2> <button type="button">❌</button></header>
        <div className="input-container">
         <div className="form-group">
 <label htmlFor="add-item">New Shopping Item</label>
-       <input type="text" name="add-item" id="add-item" />
+       <input type="text" value={name} onChange={(e)=>setName(e.target.value)} name="add-item" id="add-item" />
         </div>
         
-       <button type="submit">Submit</button>
+       <button type="submit" >Submit</button>
 
        </div>
     </Wrapper>

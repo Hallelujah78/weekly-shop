@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import type { FormProps } from '../models/FormProps.model';
 import { useState } from 'react';
 
-const AddItemForm: React.FC<FormProps> = ({onSubmit}) => {
+const AddItemForm: React.FC<FormProps> = ({onSubmit, onClose}) => {
 
 const [name, setName] = useState('');
 
@@ -11,12 +11,13 @@ const handleSubmit = (e: React.FormEvent) =>{
   e.preventDefault();
   onSubmit(name);
   setName("");
-  
 }
+
+
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-        <header> <h2>Add Shopping List Item</h2> <button type="button">❌</button></header>
+        <header> <h2>Add Shopping List Item</h2> <button onClick={onClose} type="button">❌</button></header>
        <div className="input-container">
         <div className="form-group">
 <label htmlFor="add-item">New Shopping Item</label>

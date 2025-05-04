@@ -56,6 +56,7 @@ const handleToggleStrikeThrough = (id: number) =>{
 }
 
 const showAddItemForm = () =>{
+  setIsFormHidden(prev => !prev);
 
 }
 
@@ -69,7 +70,7 @@ const handleFormSubmit = (name: string) =>{
     <Wrapper>
       <nav>
         <h1>Weekly Shopping</h1>
-        <button type="button">➕</button>
+        <button type="button" onClick={showAddItemForm}>➕</button>
         <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>{isHidden ? "Show" : "Hide"}</button>
       </nav>
       <section>
@@ -81,7 +82,9 @@ const handleFormSubmit = (name: string) =>{
       } 
       // Otherwise do nothing
     })}
-    <AddItemForm onSubmit={handleFormSubmit}/>
+    {
+    isFormHidden && <AddItemForm onSubmit={handleFormSubmit} onClose={showAddItemForm}/>
+}
       </section>
     </Wrapper>
   );

@@ -98,18 +98,25 @@ const Wrapper = styled.div`
   nav {
     border-bottom: 1px solid gray;
     text-align: center;
+    align-items: center;
+    justify-content: center;
     height: 3rem;
     display: flex;
   button{
     width: 4rem;
+    height: 80%;
   }
-  }
-  h1 {
-    margin: auto;
-
+   h1 {
+    margin: 0 auto;
+    font-size: calc(1.5rem + 0.390625vw);
     height: 100%;
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
   }
+  }
+ 
   section {
     display: grid;
     place-content: center;

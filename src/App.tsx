@@ -3,42 +3,49 @@ import { useState } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
+import { getLocalStorage, setLocalStorage } from "./utils/utils";
 
 const App: React.FC = () => {
 
-const [items, setItems] = useState<Item[]>([
-  { id: 1, name: "Doritos", strike: false },
-  { id: 2, name: "Gouda", strike: false },
-  { id: 3, name: "Doritos", strike: false },
-  { id: 4, name: "Gouda", strike: false },
-  { id: 5, name: "Doritos", strike: false },
-  { id: 6, name: "Gouda", strike: false },
-  { id: 7, name: "Doritos", strike: false },
-  { id: 8, name: "Gouda", strike: false },
-  { id: 9, name: "Doritos", strike: false },
-  { id: 10, name: "Gouda", strike: false },
-  { id: 11, name: "Doritos", strike: false },
-  { id: 12, name: "Gouda", strike: false },
-  { id: 13, name: "Doritos", strike: false },
-  { id: 14, name: "Gouda", strike: false },
-  { id: 15, name: "Doritos", strike: false },
-  { id: 16, name: "Gouda", strike: false },
-  { id: 17, name: "Doritos", strike: false },
-  { id: 18, name: "Gouda", strike: false },
-  { id: 19, name: "Doritos", strike: false },
-  { id: 20, name: "Gouda", strike: false },
-  { id: 21, name: "Doritos", strike: false },
-  { id: 22, name: "Gouda", strike: false },
-  { id: 23, name: "Doritos", strike: false },
-  { id: 24, name: "Gouda", strike: false },
-  { id: 25, name: "Doritos", strike: false },
-  { id: 26, name: "Gouda", strike: false },
-  { id: 27, name: "Doritos", strike: false },
-  { id: 28, name: "Gouda", strike: false },
-  { id: 29, name: "Doritos", strike: false },
-  { id: 30, name: "Gouda", strike: false }
-]
+const [items, setItems] = useState<Item[]>(()=>{
+  const localStore = getLocalStorage("shopping-list");
+  return localStore ? localStore : [] ;
+}
 );
+
+
+// [
+//   { id: 1, name: "Doritos", strike: false },
+//   { id: 2, name: "Gouda", strike: false },
+//   { id: 3, name: "Doritos", strike: false },
+//   { id: 4, name: "Gouda", strike: false },
+//   { id: 5, name: "Doritos", strike: false },
+//   { id: 6, name: "Gouda", strike: false },
+//   { id: 7, name: "Doritos", strike: false },
+//   { id: 8, name: "Gouda", strike: false },
+//   { id: 9, name: "Doritos", strike: false },
+//   { id: 10, name: "Gouda", strike: false },
+//   { id: 11, name: "Doritos", strike: false },
+//   { id: 12, name: "Gouda", strike: false },
+//   { id: 13, name: "Doritos", strike: false },
+//   { id: 14, name: "Gouda", strike: false },
+//   { id: 15, name: "Doritos", strike: false },
+//   { id: 16, name: "Gouda", strike: false },
+//   { id: 17, name: "Doritos", strike: false },
+//   { id: 18, name: "Gouda", strike: false },
+//   { id: 19, name: "Doritos", strike: false },
+//   { id: 20, name: "Gouda", strike: false },
+//   { id: 21, name: "Doritos", strike: false },
+//   { id: 22, name: "Gouda", strike: false },
+//   { id: 23, name: "Doritos", strike: false },
+//   { id: 24, name: "Gouda", strike: false },
+//   { id: 25, name: "Doritos", strike: false },
+//   { id: 26, name: "Gouda", strike: false },
+//   { id: 27, name: "Doritos", strike: false },
+//   { id: 28, name: "Gouda", strike: false },
+//   { id: 29, name: "Doritos", strike: false },
+//   { id: 30, name: "Gouda", strike: false }
+// ]
 
 // state for ID
 const [id, setID] = useState(30);
@@ -49,21 +56,32 @@ const [isFormHidden, setIsFormHidden] = useState(false);
 
 const handleDelete = (id: number) =>{
   setItems(prevItems => prevItems.filter(item => item.id !== id))
+  setLocalStorage("shopping-list", items);
 }
 
 const handleToggleStrikeThrough = (id: number) =>{
-  setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item))
+  setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item));
+  // Update local storage
+  setLocalStorage("shopping-list", items);
 }
 
 const showAddItemForm = () =>{
   setIsFormHidden(prev => !prev);
-
 }
 
 
 const handleFormSubmit = (name: string) =>{
-  setID(prev => prev + 1);
-  setItems(prev => [...prev, {id: id, name, strike: false}]);
+  setID(prevID => {
+    const newID = prevID + 1;
+
+    setItems(prevItems => {
+      const newItems = [...prevItems, { id: newID, name, strike: false }];
+      setLocalStorage("shopping-list", newItems);
+      return newItems;
+    });
+
+    return newID;
+  });
 }
 
   return (

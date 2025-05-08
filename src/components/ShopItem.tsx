@@ -7,7 +7,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ item, onDelete, onToggle}) => {
 
 
   return (
-    <Wrapper strike={item.strike} id={item.id.toString()} onClick={()=>{onToggle(item.id)}}
+    <Wrapper $strike={item.strike} id={item.id ? item.id.toString() : ""} onClick={()=>{onToggle(item.id)}}
     >
       <div className="name-container">{item.name}</div>
       <button onClick={(e)=>{
@@ -19,7 +19,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ item, onDelete, onToggle}) => {
 };
 export default ShopItem;
 
-const Wrapper = styled.div<{strike: boolean}>`
+const Wrapper = styled.div<{$strike: boolean}>`
   cursor: pointer;
   position: relative;
   display: flex;
@@ -27,8 +27,8 @@ const Wrapper = styled.div<{strike: boolean}>`
   width: 80vw;
   border: black solid 1px;
   .name-container {
-    text-decoration: ${props => (props.strike ? "line-through" : "none")};
-    color: ${props => (props.strike ? "gray" : "black")};;
+    text-decoration: ${props => (props.$strike ? "line-through" : "none")};
+    color: ${props => (props.$strike ? "gray" : "black")};;
     margin: .75rem auto;
     width: 100%;
     height: 100%;

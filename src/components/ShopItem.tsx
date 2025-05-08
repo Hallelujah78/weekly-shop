@@ -7,7 +7,7 @@ const ShopItem: React.FC<ShopItemProps> = ({ item, onDelete, onToggle}) => {
 
 
   return (
-    <Wrapper $strike={item.strike} id={item.id ? item.id.toString() : ""} onClick={()=>{onToggle(item.id)}}
+    <Wrapper $strike={item.strike} id={item.id} onClick={()=>{onToggle(item.id)}}
     >
       <div className="name-container">{item.name}</div>
       <button onClick={(e)=>{

@@ -2,6 +2,6 @@ import type { Item } from "./Item.model";
 
 export type ShopItemProps = {
 item: Item;
-onDelete: (id: number) => void;
-onToggle: (id: number) => void;
+onDelete: (id: string) => void;
+onToggle: (id: string) => void;
 }

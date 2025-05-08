@@ -15,19 +15,18 @@ const [items, setItems] = useState<Item[]>(()=>{
 );
 
 
-// state for ID
-const [id, setID] = useState(30);
+
 // State for show/hide items that have strikethrough
 const [isHidden, setIsHidden] = useState(false);
 // State to show/hide the add item form
 const [isFormHidden, setIsFormHidden] = useState(false);
 
-const handleDelete = (id: number) =>{
+const handleDelete = (id: string) =>{
   setItems(prevItems => prevItems.filter(item => item.id !== id))
   setLocalStorage("shopping-list", items);
 }
 
-const handleToggleStrikeThrough = (id: number) =>{
+const handleToggleStrikeThrough = (id: string) =>{
   setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item));
   // Update local storage
   setLocalStorage("shopping-list", items);

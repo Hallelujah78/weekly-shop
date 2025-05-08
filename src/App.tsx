@@ -14,39 +14,6 @@ const [items, setItems] = useState<Item[]>(()=>{
 );
 
 
-// [
-//   { id: 1, name: "Doritos", strike: false },
-//   { id: 2, name: "Gouda", strike: false },
-//   { id: 3, name: "Doritos", strike: false },
-//   { id: 4, name: "Gouda", strike: false },
-//   { id: 5, name: "Doritos", strike: false },
-//   { id: 6, name: "Gouda", strike: false },
-//   { id: 7, name: "Doritos", strike: false },
-//   { id: 8, name: "Gouda", strike: false },
-//   { id: 9, name: "Doritos", strike: false },
-//   { id: 10, name: "Gouda", strike: false },
-//   { id: 11, name: "Doritos", strike: false },
-//   { id: 12, name: "Gouda", strike: false },
-//   { id: 13, name: "Doritos", strike: false },
-//   { id: 14, name: "Gouda", strike: false },
-//   { id: 15, name: "Doritos", strike: false },
-//   { id: 16, name: "Gouda", strike: false },
-//   { id: 17, name: "Doritos", strike: false },
-//   { id: 18, name: "Gouda", strike: false },
-//   { id: 19, name: "Doritos", strike: false },
-//   { id: 20, name: "Gouda", strike: false },
-//   { id: 21, name: "Doritos", strike: false },
-//   { id: 22, name: "Gouda", strike: false },
-//   { id: 23, name: "Doritos", strike: false },
-//   { id: 24, name: "Gouda", strike: false },
-//   { id: 25, name: "Doritos", strike: false },
-//   { id: 26, name: "Gouda", strike: false },
-//   { id: 27, name: "Doritos", strike: false },
-//   { id: 28, name: "Gouda", strike: false },
-//   { id: 29, name: "Doritos", strike: false },
-//   { id: 30, name: "Gouda", strike: false }
-// ]
-
 // state for ID
 const [id, setID] = useState(30);
 // State for show/hide items that have strikethrough

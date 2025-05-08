@@ -4,6 +4,7 @@ import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
 import { getLocalStorage, setLocalStorage } from "./utils/utils";
+import {v4 as uuidv4} from 'uuid';
 
 const App: React.FC = () => {
 
@@ -38,17 +39,12 @@ const showAddItemForm = () =>{
 
 
 const handleFormSubmit = (name: string) =>{
-  setID(prevID => {
-    const newID = prevID + 1;
-
+  const newItem = {id: uuidv4(), name, strike: false};
     setItems(prevItems => {
-      const newItems = [...prevItems, { id: newID, name, strike: false }];
-      setLocalStorage("shopping-list", newItems);
+      const newItems = [...prevItems, newItem];
       return newItems;
     });
-
-    return newID;
-  });
+    setLocalStorage("shopping-list", [...items, newItem]);
 }
 
   return (

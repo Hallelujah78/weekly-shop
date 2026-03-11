@@ -1,18 +1,24 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
 import { getLocalStorage, setLocalStorage } from "./utils/utils";
 import {v4 as uuidv4} from 'uuid';
+import { shoppingList } from "./data/shopping";
 
 const App: React.FC = () => {
 
 const [items, setItems] = useState<Item[]>(()=>{
   const localStore = getLocalStorage("shopping-list");
-  return localStore ? localStore : [] ;
+  return localStore ? localStore : shoppingList ;
 }
 );
+
+// Set local storage each time `items` changes
+useEffect(()=>{
+setLocalStorage("shopping-list", items);
+},[items])
 
 
 
@@ -22,14 +28,11 @@ const [isHidden, setIsHidden] = useState(false);
 const [isFormHidden, setIsFormHidden] = useState(false);
 
 const handleDelete = (id: string) =>{
-  setItems(prevItems => prevItems.filter(item => item.id !== id))
-  setLocalStorage("shopping-list", items);
+  setItems(prevItems => prevItems.filter(item => item.id !== id));
 }
 
 const handleToggleStrikeThrough = (id: string) =>{
   setItems(prevItems => prevItems.map(item => item.id === id ? {...item, strike: !item.strike} : item));
-  // Update local storage
-  setLocalStorage("shopping-list", items);
 }
 
 const showAddItemForm = () =>{
@@ -43,7 +46,7 @@ const handleFormSubmit = (name: string) =>{
       const newItems = [...prevItems, newItem];
       return newItems;
     });
-    setLocalStorage("shopping-list", [...items, newItem]);
+  
 }
 
   return (

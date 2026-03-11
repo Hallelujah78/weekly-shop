@@ -12,5 +12,6 @@ export const getLocalStorage = (
 ): Item[] => {
   let val = null;
     val = JSON.parse(localStorage.getItem(key) as string) as Item[];
+    console.log(val);
   return val;
 };

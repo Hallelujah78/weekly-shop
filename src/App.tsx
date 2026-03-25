@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
-import { getLocalStorage, setLocalStorage } from "./utils/utils";
+import { formatShoppingList, getLocalStorage, setLocalStorage } from "./utils/utils";
 import {v4 as uuidv4} from 'uuid';
 import { shoppingList } from "./data/shopping";
 
@@ -54,7 +54,9 @@ const handleFormSubmit = (name: string) =>{
       <nav>
         <h1>Weekly Shopping</h1>
         <button type="button" onClick={showAddItemForm}>➕</button>
-        <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>{isHidden ? "Show" : "Hide"}</button>
+        <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>
+        {isHidden ? "Show" : "Hide"}</button>
+        <button type="button" onClick={()=>formatShoppingList(items)}>📋</button>
       </nav>
       <section>
     {items.map((item)=>{

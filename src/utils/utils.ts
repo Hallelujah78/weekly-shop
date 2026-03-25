@@ -15,8 +15,8 @@ export const getLocalStorage = (
   return val;
 };
 
-export const formatShoppingList = (shoppingList: Item[]) =>{
-
- const formattedList = shoppingList.map(item => !item.strike && item.name).join("\n");
- console.log(formattedList); 
-}
+export const formatShoppingList = (shoppingList: Item[]) => 
+  shoppingList.filter(item => !item.strike)
+ .map(item => item.name)
+ .join("\n");
+ 

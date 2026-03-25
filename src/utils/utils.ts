@@ -14,3 +14,9 @@ export const getLocalStorage = (
     val = JSON.parse(localStorage.getItem(key) as string) as Item[];
   return val;
 };
+
+export const formatShoppingList = (shoppingList: Item[]) =>{
+
+ const formattedList = shoppingList.map(item => !item.strike && item.name).join("\n");
+ console.log(formattedList); 
+}

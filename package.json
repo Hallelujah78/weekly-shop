@@ -1,8 +1,8 @@
 {
-  "name": "starter",
-  "version": "1.0.0",
-  "description": "A React, TS, vite, cypress starter",
-  "main": "index.tsx",
+  "name": "weekly-shopping-list",
+  "version": "1.0.1",
+  "description": "A weekly shopping list built with React and TS",
+  "main": "main.tsx",
   "type": "module",
   "author": {
     "name": "Gavan Browne",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hallelujah78/starter-TS-React-Vite-Cypress"
+    "url": "https://github.com/Hallelujah78/weekly-shop"
   },
   "scripts": {
     "dev": "vite --host",
@@ -20,13 +20,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^12.35.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-icons": "^5.6.0",
     "react-toastify": "^11.0.5",
     "styled-components": "^6.3.11",
-    "styled-reset": "^5.0.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

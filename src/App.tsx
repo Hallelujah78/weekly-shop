@@ -6,6 +6,7 @@ import AddItemForm from "./components/AddItemForm";
 import { copyToClipboard, formatShoppingList, getLocalStorage, setLocalStorage, titleCaseString } from "./utils/utils";
 import {v4 as uuidv4} from 'uuid';
 import { shoppingList } from "./data/shopping";
+import { toast } from "react-toastify";
 
 const App: React.FC = () => {
 
@@ -52,9 +53,10 @@ const handleCopyToClipboard = async () =>{
   const success = await copyToClipboard(items, formatShoppingList);
   if(success){
     // toast success
-    console.log(await navigator.clipboard.readText());
+    toast("Shopping list successfully copied to clipboard!")
   } else{
     // toast failure
+    toast("Oops! Failed to copy shopping list to clipboard!")
   }
 }
 

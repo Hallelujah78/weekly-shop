@@ -19,4 +19,13 @@ export const formatShoppingList = (shoppingList: Item[]) =>
   shoppingList.filter(item => !item.strike)
  .map(item => item.name)
  .join("\n");
+
+
+ 
+ export const titleCaseString = (string: string) => {
+  string.split(" ")
+  .map(word => word.charAt(0).toUpperCase() + word.slice(0))
+  .join(" ");
+
+ }
  

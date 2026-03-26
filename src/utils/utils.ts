@@ -34,4 +34,17 @@ export const formatShoppingList = (shoppingList: Item[]) =>
  }
 
  export const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
+
  
+ export const copyToClipboard = async (
+  shoppingList: Item[], 
+  formattingFunction: (shoppingList: Item[]) => string
+) => {
+  try{
+  await navigator.clipboard.writeText(formattingFunction(shoppingList));
+    return true;
+  } catch (err) {
+    return false;
+  }
+
+}

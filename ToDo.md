@@ -25,5 +25,9 @@ Have an editable list of all items we buy in the house available on my device vi
   - category (which would correspond to sorting by aisle most likely)
   - alphabetically
 - allow click and drag movement of categories
+- ~~titlecase input when items are added to the list~~
+
 - output list to clipboard
-- titlecase input when items are added to the list
+  - user clicks the button
+  - the shopping items are formatted and writtent to the clipboard
+  - we notifiy user items saved to clipboard

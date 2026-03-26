@@ -24,10 +24,14 @@ export const formatShoppingList = (shoppingList: Item[]) =>
 
  export const titleCaseString = (string: string) => {
   return string.split(" ")
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  .join(" ")
-  .split("-")
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1) )
-  .join("-");
+  .map(part => 
+    part
+    .split("-")
+    .map(capitalize)
+    .join("-")
+    
+  ).join(" ")
  }
+
+ export const capitalize = (word: string) => word.charAt(0).toUpperCase() + word.slice(1)
  

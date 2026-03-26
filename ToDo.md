@@ -17,3 +17,13 @@ Have an editable list of all items we buy in the house available on my device vi
   - alphabetically
 - allow click and drag movement of categories
 - output list to clipboard
+
+## 26/3/26 - Nice to have
+
+- permanent storage instead of simply local storage
+- sort items by:
+  - category (which would correspond to sorting by aisle most likely)
+  - alphabetically
+- allow click and drag movement of categories
+- output list to clipboard
+- titlecase input when items are added to the list

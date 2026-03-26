@@ -7,7 +7,7 @@ const AddItemForm: React.FC<FormProps> = ({onSubmit, onClose}) => {
 
 const [name, setName] = useState('');
 
-const handleSubmit = (e: React.FormEvent) =>{
+const handleSubmit = (e: React.SubmitEvent) =>{
   e.preventDefault();
   onSubmit(name);
   setName("");

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
-import { formatShoppingList, getLocalStorage, setLocalStorage, titleCaseString } from "./utils/utils";
+import { copyToClipboard, formatShoppingList, getLocalStorage, setLocalStorage, titleCaseString } from "./utils/utils";
 import {v4 as uuidv4} from 'uuid';
 import { shoppingList } from "./data/shopping";
 
@@ -48,6 +48,16 @@ const handleFormSubmit = (name: string) =>{
     });
 }
 
+const handleCopyToClipboard = async () =>{
+  const success = await copyToClipboard(items, formatShoppingList);
+  if(success){
+    // toast success
+    console.log(await navigator.clipboard.readText());
+  } else{
+    // toast failure
+  }
+}
+
   return (
     <Wrapper>
       <nav>
@@ -55,7 +65,7 @@ const handleFormSubmit = (name: string) =>{
         <button type="button" onClick={showAddItemForm}>➕</button>
         <button type="button" onClick={()=>{setIsHidden(prev => !prev)}}>
         {isHidden ? "Show" : "Hide"}</button>
-        <button type="button" onClick={()=>formatShoppingList(items)}>📋</button>
+        <button type="button" onClick={handleCopyToClipboard}>📋</button>
       </nav>
       <section>
     {items.map((item)=>{

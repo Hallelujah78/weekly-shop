@@ -21,11 +21,13 @@ export const formatShoppingList = (shoppingList: Item[]) =>
  .join("\n");
 
 
- 
- export const titleCaseString = (string: string) => {
-  string.split(" ")
-  .map(word => word.charAt(0).toUpperCase() + word.slice(0))
-  .join(" ");
 
+ export const titleCaseString = (string: string) => {
+  return string.split(" ")
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(" ")
+  .split("-")
+  .map(word => word.charAt(0).toUpperCase() + word.slice(1) )
+  .join("-");
  }
  

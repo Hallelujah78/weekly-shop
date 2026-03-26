@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import type {Item} from './models/Item.model';
 import ShopItem from "./components/ShopItem";
 import AddItemForm from "./components/AddItemForm";
-import { formatShoppingList, getLocalStorage, setLocalStorage } from "./utils/utils";
+import { formatShoppingList, getLocalStorage, setLocalStorage, titleCaseString } from "./utils/utils";
 import {v4 as uuidv4} from 'uuid';
 import { shoppingList } from "./data/shopping";
 
@@ -41,12 +41,11 @@ const showAddItemForm = () =>{
 
 
 const handleFormSubmit = (name: string) =>{
-  const newItem = {id: uuidv4(), name, strike: false};
+  const newItem = {id: uuidv4(), name: titleCaseString(name), strike: false};
     setItems(prevItems => {
       const newItems = [...prevItems, newItem];
       return newItems;
     });
-  
 }
 
   return (

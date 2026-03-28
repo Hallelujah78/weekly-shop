@@ -1,0 +1,17 @@
+export const CATEGORIES = [
+    {value: "fresh_food", label: "Fresh Food"},
+    {value: "meat_and_fish", label: "Meat & Fish"},
+    {value: "dairy_and_eggs", label: "Dairy & Eggs"},
+    {value: "bakery", label: "Bakery"},
+    {value: "frozen_foods", label: "Frozen Foods"},
+    {value: "beverages", label: "Beverages"},
+    {value: "alcohol", label: "Alcohol"},
+    {value: "ready_to_eat", label: "Ready-to-Eat"},
+    {value: "household_and_cleaning", label: "Household & Cleaning"},
+    {value: "personal_care_and_health", label: "Personal Care & Health"},
+    {value: "pet_supplies", label: "Pet Supplies"},
+    {value: "miscellaneous", label: "Miscellaneous"},
+    {value: "dry_goods_and_staples", label: "Dry Goods & Staples"},
+    {value: "cooking_and_condiments", label: "Cooking & Condiments"},
+    {value: "snacks_and_treats", label: "Snacks & Treats"},
+] as const

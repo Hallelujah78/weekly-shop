@@ -1,4 +1,4 @@
 export type FormProps = {
-onSubmit: (name: string) => void;
-onClose: ()=>void;
-}
+  onSubmit: (name: string, category: string) => void;
+  onClose: () => void;
+};

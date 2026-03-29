@@ -41,7 +41,7 @@ const showAddItemForm = () =>{
 }
 
 
-const handleFormSubmit = (name: string) =>{
+const handleFormSubmit = (name: string, category: string) =>{
   const newItem = {id: uuidv4(), name: titleCaseString(name), strike: false};
     setItems(prevItems => {
       const newItems = [...prevItems, newItem];
